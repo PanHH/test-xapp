@@ -168,8 +168,8 @@ class App extends React.Component {
 
     getAccountAssets = async () => {
       const { address, chainId } = this.state;
-      console.log(`address:` + address);
-      console.log(`chainId:` + chainId);
+    // console.log(`address:` + address);
+    // console.log(`chainId:` + chainId);
     //   this.setState({ fetching: true });
     //   try {
     //     // get account balances
@@ -186,6 +186,7 @@ class App extends React.Component {
 
     testPersonalSignMessage = async () => {
       const { connector, address, chainId } = this.state;
+      console.log(`Start personal sign: address[`+ address +`], chainId[`+ chainId +`]`);
   
       if (!connector) {
         return;
@@ -199,7 +200,10 @@ class App extends React.Component {
   
       // eth_sign params
       const msgParams = [hexMsg, address];
-  
+
+      console.log(`message:`+ message);
+      console.log(`message(hex):`+ hexMsg);
+      
       try {
         // open modal
         this.toggleModal();
@@ -214,6 +218,10 @@ class App extends React.Component {
         const hash = hashMessage(message);
         const valid = await verifySignature(address, result, hash, chainId);
   
+        console.log(`message(hash):`+ hash);
+        console.log(`sign result:`+ result);
+        console.log(`verify result:`+ valid);
+
         // format displayed result
         const formattedResult = {
           method: "personal_sign",
@@ -273,6 +281,8 @@ class App extends React.Component {
 
     render() {
       const { address, chainId } = this.state;
+      console.log(`address:` + address);
+      console.log(`chainId:` + chainId);
       return (
         <div className="App">
             <header className="App-header">
