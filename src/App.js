@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import { useState } from 'react';
 import React from 'react';
+import VConsole from 'vconsole';
 
 import HttpUtils from './components/HttpUtils';
 import { verifySignature, hashMessage } from "./components/Utils";
@@ -10,7 +11,7 @@ import WalletConnect from "@walletconnect/client";
 import QRCodeModal from "@walletconnect/qrcode-modal";
 import { convertUtf8ToHex } from "@walletconnect/utils";
 
-
+const vConsole = new VConsole();
 
 const INITIAL_STATE = {
     connector: null,
@@ -167,7 +168,7 @@ class App extends React.Component {
     };
 
     getAccountAssets = async () => {
-      const { address, chainId } = this.state;
+    // const { address, chainId } = this.state;
     // console.log(`address:` + address);
     // console.log(`chainId:` + chainId);
     //   this.setState({ fetching: true });
